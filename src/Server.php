@@ -81,9 +81,6 @@ class Server
 
 			// Accept any new connections
 			$this->processConnections($read);
-
-//			sleep(1);
-//			usleep(100000);
 		}
 	}
 
