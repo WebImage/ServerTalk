@@ -1,0 +1,17 @@
+{
+  "name": "webimage/server-talk",
+  "description": "Create a simple PHP server",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Webimage\\ServerTalk\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Robert Jones II",
+      "email": "rjones@corporatewebimage.com"
+    }
+  ],
+  "require": {}
+}
