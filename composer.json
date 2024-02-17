@@ -2,6 +2,7 @@
   "name": "webimage/server-talk",
   "description": "Create a simple PHP server",
   "type": "library",
+  "version": "1.0.0",
   "autoload": {
     "psr-4": {
       "WebImage\\ServerTalk\\": "src/"
