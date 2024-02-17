@@ -4,7 +4,7 @@
   "type": "library",
   "autoload": {
     "psr-4": {
-      "Webimage\\ServerTalk\\": "src/"
+      "WebImage\\ServerTalk\\": "src/"
     }
   },
   "authors": [
