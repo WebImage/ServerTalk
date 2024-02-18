@@ -14,5 +14,7 @@
       "email": "rjones@corporatewebimage.com"
     }
   ],
-  "require": {}
+  "require": {
+    "ext-sockets": "*"
+  }
 }
