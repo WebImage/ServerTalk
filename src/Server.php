@@ -116,7 +116,7 @@ class Server
 		 * Attempt to read any initial
 		 */
 		$data = '';
-		$test = socket_recv($socket, $data, 5, MSG_PEEK);
+		socket_recv($socket, $data, 5, MSG_PEEK | MSG_DONTWAIT);
 		socket_getpeername($socket, $addr, $port);
 		if (substr($data, 0, 5) == 'GET /') return $this->createWebSocketConnection($socket, $addr, $port);
 
