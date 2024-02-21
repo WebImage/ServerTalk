@@ -43,7 +43,7 @@ class WebSocketConnection extends AbstractConnection
 //		$response .= "Sec-WebSocket-Protocol: agent\r\n";
 		$response .= "\r\n";
 
-		parent::send($response);
+		parent::write($response);
 	}
 
 	/**
@@ -155,7 +155,7 @@ class WebSocketConnection extends AbstractConnection
 //		}
 //	}
 
-	public function send($data)
+	public function write($data)
 	{
 		/**
 		 * https://tools.ietf.org/html/rfc6455#section-5.2
