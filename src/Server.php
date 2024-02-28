@@ -3,7 +3,6 @@
 namespace WebImage\ServerTalk;
 
 use Exception;
-use WebImage\Socket\SocketConnectionException;
 
 class Server
 {
