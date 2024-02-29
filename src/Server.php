@@ -8,12 +8,14 @@ class Server
 {
 	/** @var bool */
 	private $running; // Whether the server has been started with run()
-	private /*string*/ $host;
-	private /*int*/ $port;
+	private /*string*/
+			$host;
+	private /*int*/
+			$port;
 	private $serverSocket;
 	private $shouldStopHandler = null;
 	/** @var ConnectionInterface[] */
-	private $connections       = [];
+	private $connections = [];
 	/** @var callable */
 	private $onConnectionHandler = null;
 	/** @var callable */
@@ -23,8 +25,8 @@ class Server
 
 	public function __construct(string $host, int $port)
 	{
-		$this->host    = $host;
-		$this->port    = $port;
+		$this->host = $host;
+		$this->port = $port;
 	}
 
 	public function shouldStop(callable $handler)
@@ -63,7 +65,9 @@ class Server
 				if (true === call_user_func($this->shouldStopHandler)) break;
 			}
 
-			$read = array_merge([$this->serverSocket], array_map(function(ConnectionInterface $connection) { return $connection->getSocket(); }, $this->connections));
+			$read = array_merge([$this->serverSocket], array_map(function (ConnectionInterface $connection) {
+				return $connection->getSocket();
+			}, $this->connections));
 
 			$numChanges = socket_select($read, $write, $execptions, 0);
 
@@ -97,7 +101,6 @@ class Server
 		if (!is_resource($socket)) return;
 
 		$connection          = $this->negotiateConnectionType($socket);
-		$this->log('New connection: ' . $connection->getAddr() . ':' . $connection->getPort());
 		$this->connections[] = $connection;
 
 		// Call onConnection handler
@@ -138,7 +141,7 @@ class Server
 
 	private function processConnections(array $read)
 	{
-		foreach($this->connections as $ix => $connection) {
+		foreach ($this->connections as $ix => $connection) {
 			if (!in_array($connection->getSocket(), $read)) continue;
 
 			$message = $connection->receive();
@@ -157,7 +160,7 @@ class Server
 	private function cleanupClosedConnections()
 	{
 		$closedAny = false;
-		foreach($this->connections as $ix => $connection) {
+		foreach ($this->connections as $ix => $connection) {
 			if ($connection->isClosed()) {
 				unset($this->connections[$ix]);
 				$closedAny = true;
