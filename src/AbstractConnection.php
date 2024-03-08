@@ -25,7 +25,7 @@ abstract class AbstractConnection implements ConnectionInterface
 	 */
 	public function __construct(Server $server, $socket, string $addr='', int $port=0)
 	{
-		if (!is_resource($socket)) throw new \RuntimeException('Socket is expected to be a resource');
+		if (!$socket) throw new \RuntimeException('Socket is expected to be a resource');
 
 		$this->server = $server;
 		$this->socket = $socket;
@@ -116,7 +116,7 @@ abstract class AbstractConnection implements ConnectionInterface
 	public function close()
 	{
 		$this->isClosed = true;
-		if (is_resource($this->getSocket())) @socket_close($this->getSocket());
+		if ($this->getSocket()) @socket_close($this->getSocket());
 	}
 
 	/**

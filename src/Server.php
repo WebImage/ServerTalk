@@ -96,9 +96,7 @@ class Server
 	{
 		$socket = @socket_accept($this->serverSocket);
 
-		if ($socket === false) return;
-
-		if (!is_resource($socket)) return;
+		if ($socket === false || $socket === null) return;
 
 		$connection          = $this->negotiateConnectionType($socket);
 		$this->connections[] = $connection;
